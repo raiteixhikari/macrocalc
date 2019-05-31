@@ -13,44 +13,74 @@ def fbmr(age,height,weight):
 ##### FEMALE BMR Function ############################################### END ####
 
 
-##### TDEE Based on MALE BMR ############################################ START ####
+##### TDEE Maintenance and Cut Based on MALE BMR ############################################ START ####
 
 def msedentary(mbmr):
     return round((mbmr(age,height,weight) * 1.2),2)
 
+def msedentarycut(msedentary):
+    return round(msedentary(mbmr) - ((20/100) * msedentary(mbmr)),2)
+
 def mlight(mbmr):
     return round((mbmr(age,height,weight)* 1.375),2)
+
+def mlightcut(mlight):
+    return round(mlight(mbmr) - ((20/100) * mlight(mbmr)),2)
 
 def mmoderate(mbmr):
     return round((mbmr(age,height,weight) * 1.55),2)
 
+def mmoderatecut(mmoderate):
+    return round(mmoderate(mbmr) - ((20/100) * mmoderate(mbmr)),2)
+
 def mvery(mbmr):
     return round((mbmr(age,height,weight) * 1.725),2)
+
+def mverycut(mvery):
+    return round(mvery(mbmr) - ((20/100) * mvery(mbmr)),2)
 
 def mextreme(mbmr):
     return round((mbmr(age,height,weight) * 1.9),2)
 
-##### TDEE Based on MALE BMR ############################################ END ####
+def mextremecut(mextreme):
+    return round(mextreme(mbmr) - ((20/100) * mextreme(mbmr)),2)
+
+##### TDEE Maintenance and Cut Based on MALE BMR ############################################ END ####
 
 
-##### TDEE Based on FEMALE BMR ########################################## START ####
+##### TDEE Maintanance and Cut Based on FEMALE BMR ########################################## START ####
 
 def fsedentary(fbmr):
     return round((fbmr(age,height,weight) * 1.2),2)
 
+def fsedentarycut(fsedentary):
+    return round(fsedentary(fbmr) - ((20/100) * fsedentary(fbmr)),2)
+
 def flight(fbmr):
     return round((fbmr(age,height,weight)* 1.375),2)
+
+def flightcut(flight):
+    return round(flight(fbmr) - ((20/100) * flight(fbmr)),2)
 
 def fmoderate(fbmr):
     return round((fbmr(age,height,weight) * 1.55),2)
 
+def fmoderatecut(fmoderate):
+    return round(fmoderate(fbmr) - ((20/100) * fmoderate(fbmr)),2)
+
 def fvery(fbmr):
     return round((fbmr(age,height,weight) * 1.725),2)
+
+def fverycut(fvery):
+    return round(fvery(fbmr) - ((20/100) * fvery(fbmr)),2)
 
 def fextreme(fbmr):
     return round((fbmr(age,height,weight) * 1.9),2)
 
-##### TDEE Based on FEMALE BMR ########################################## END ####
+def fextremecut(fextreme):
+    return round(fextreme(fbmr) - ((20/100) * fextreme(fbmr)),2)
+
+##### TDEE Maintainance and Cut Based on FEMALE BMR ########################################## END ####
 
 
 ##### Activity Levels Selection to calculate MALE TDEE #################################### START ####
@@ -67,26 +97,41 @@ def moption():
     if choice is '1':
         print("Your BMR is : ", mbmr(age, height, weight))  # calls bmr function
         print("Your TDEE is : ", msedentary(mbmr)) #calls tdee function
+        print("Your cutting intake is : ", msedentarycut(msedentary))
+        # Extra Information for Bulking added here with simple addition function
+        print('Your clean bulking intake is %d to %d ' % ((msedentary(mbmr)+200), (msedentary(mbmr)+300)))
         input("Press Enter to continue...")
 
     if choice is '2':
         print("Your BMR is : ", mbmr(age, height, weight))  # calls bmr function
         print("Your TDEE is :", mlight(mbmr)) #calls tdee function
+        print("Your cutting intake is : ", mlightcut(mlight))
+        # Extra Information for Bulking added here with simple addition function
+        print('Your clean bulking intake is %d to %d ' % ((mlight(mbmr) + 200), (mlight(mbmr) + 300)))
         input("Press Enter to continue...")
 
     if choice is '3':
         print("Your BMR is : ", mbmr(age, height, weight))  # calls bmr function
         print("Your TDEE is :", mmoderate(mbmr))  # calls tdee function
+        print("Your cutting intake is : ", mmoderatecut(mmoderate))
+        # Extra Information for Bulking added here with simple addition function
+        print('Your clean bulking intake is %d to %d ' % ((mmoderate(mbmr) + 200), (mmoderate(mbmr) + 300)))
         input("Press Enter to continue...")
 
     if choice is '4':
         print("Your BMR is : ", mbmr(age, height, weight))  # calls bmr function
         print("Your TDEE is :", mvery(mbmr))  # calls tdee function
+        print("Your cutting intake is : ", mverycut(mvery))
+        # Extra Information for Bulking added here with simple addition function
+        print('Your clean bulking intake is %d to %d ' % ((mvery(mbmr) + 200), (mvery(mbmr) + 300)))
         input("Press Enter to continue...")
 
     if choice is '5':
         print("Your BMR is : ", mbmr(age, height, weight))  # calls bmr function
         print("Your TDEE is :", mextreme(mbmr))  # calls tdee function
+        print("Your cutting intake is : ", mextremecut(mextreme))
+        # Extra Information for Bulking added here with simple addition function
+        print('Your clean bulking intake is %d to %d ' % ((mextreme(mbmr) + 200), (mextreme(mbmr) + 300)))
         input("Press Enter to continue...")
 
     if choice is 'q':
@@ -113,26 +158,41 @@ def foption():
     if choice is '1':
         print("Your BMR is : ", fbmr(age, height, weight))  # calls bmr function
         print("Your TDEE is : ", fsedentary(fbmr))  # calls tdee function
+        print("Your cutting intake is : ", fsedentarycut(fsedentary))
+        # Extra Information for Bulking added here with simple addition function
+        print('Your clean bulking intake is %d to %d ' % ((fsedentary(mbmr) + 200), (fsedentary(mbmr) + 300)))
         input("Press Enter to continue...")
 
     if choice is '2':
         print("Your BMR is : ", fbmr(age, height, weight))  # calls bmr function
         print("Your TDEE is :", flight(fbmr))  # calls tdee function
+        print("Your cutting intake is : ", flightcut(flight))
+        # Extra Information for Bulking added here with simple addition function
+        print('Your clean bulking intake is %d to %d ' % ((flight(mbmr) + 200), (flight(mbmr) + 300)))
         input("Press Enter to continue...")
 
     if choice is '3':
         print("Your BMR is : ", fbmr(age, height, weight))  # calls bmr function
         print("Your TDEE is :", fmoderate(fbmr))  # calls tdee function
+        print("Your cutting intake is : ", fmoderatecut(fmoderate))
+        # Extra Information for Bulking added here with simple addition function
+        print('Your clean bulking intake is %d to %d ' % ((fmoderate(mbmr) + 200), (fmoderate(mbmr) + 300)))
         input("Press Enter to continue...")
 
     if choice is '4':
         print("Your BMR is : ", fbmr(age, height, weight))  # calls bmr function
         print("Your TDEE is :", fvery(fbmr))  # calls tdee function
+        print("Your cutting intake is : ", fverycut(fvery))
+        # Extra Information for Bulking added here with simple addition function
+        print('Your clean bulking intake is %d to %d ' % ((fvery(mbmr) + 200), (fvery(mbmr) + 300)))
         input("Press Enter to continue...")
 
     if choice is '5':
         print("Your BMR is : ", fbmr(age, height, weight))  # calls bmr function
         print("Your TDEE is :", fextreme(fbmr))  # calls tdee function
+        print("Your cutting intake is : ", fextremecut(fextreme))
+        # Extra Information for Bulking added here with simple addition function
+        print('Your clean bulking intake is %d to %d ' % ((fextreme(mbmr) + 200), (fextreme(mbmr) + 300)))
         input("Press Enter to continue...")
 
     if choice is 'q':
